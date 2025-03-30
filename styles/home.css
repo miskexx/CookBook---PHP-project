@@ -1,0 +1,43 @@
+#submit{
+    background-color: var(--white);
+    border: none;
+}
+
+#search{
+    background-color: var(--white);
+    border-bottom: 3px solid var(--lightpink); 
+    border-top: none; border-left: none; border-right: none;
+}
+
+#search:focus{
+    outline: none;
+    caret-color: var(--lightpink); 
+}
+
+h1{
+    font-family: Kanit;
+    color: var(--pink);
+}
+
+h2{
+    font-family: Kanit;
+}
+
+h3{
+    font-family: Kanit;
+    color: var(--lightpink);
+}
+
+header{
+    display: flex;
+    width: 90vw;
+    height: 3vw;
+    padding-top: 2vw;
+    justify-content: space-around;
+    align-items: baseline;
+    border-bottom: 5px solid var(--pink);
+}
+
+header a{
+    text-decoration: none;
+}
