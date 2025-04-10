@@ -1,26 +1,21 @@
-#submit{
+body{
     background-color: var(--white);
-    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#search{
-    background-color: var(--white);
-    border-bottom: 3px solid var(--lightpink); 
-    border-top: none; border-left: none; border-right: none;
+main{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#search:focus{
-    outline: none;
-    caret-color: var(--lightpink); 
-}
-
-h1{
+h1, h2{
     font-family: Kanit;
     color: var(--pink);
-}
-
-h2{
-    font-family: Kanit;
 }
 
 h3{
@@ -28,10 +23,15 @@ h3{
     color: var(--lightpink);
 }
 
+h3, h4, h5{
+    font-family: Kanit;
+}
+
+
 header{
     display: flex;
     width: 90vw;
-    height: 3vw;
+    height: 50px;
     padding-top: 2vw;
     justify-content: space-around;
     align-items: baseline;
@@ -40,4 +40,94 @@ header{
 
 header a{
     text-decoration: none;
+}
+
+/* karty */
+
+.cards-div{
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(4 ,2fr );
+    grid-template-rows: repeat(3, 2fr);
+    place-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.card{
+    background-color: var(--yellow);
+    padding: 0px;
+    margin: 20px;
+    border-radius: 24px;
+    width: 240px;
+    height: 270px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0px;
+
+}
+
+.card-img img{
+    width: 240px;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 100px;
+}
+
+#uzivatel{
+    margin-bottom: 5px;
+}
+
+.card-buttons{
+    margin-bottom: 15px;
+}
+
+#dish-name{
+    color: var(--red);
+}
+
+#uzivatel{
+    color: var(--pink);
+}
+
+#delete{
+    background-color: #e45a37;
+    padding: 4px 20px;
+    border: 3px solid var(--red);
+    color: rgb(57, 52, 52);
+    font-family: Kanit;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#delete:hover{
+    background-color: var(--red);
+}
+
+
+#edit{
+    background-color: #A9D57D;
+    padding: 4px 20px;
+    border: 3px solid #95C369;
+    color: rgb(57, 52, 52);
+    font-family: Kanit;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+#edit:hover{
+    background-color: #95C369;
 }

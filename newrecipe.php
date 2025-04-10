@@ -1,9 +1,21 @@
+<?php 
+
+    session_start();
+
+    include("connection.php");
+    include("functions.php");
+
+    $user_data = check_login($con);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje PHP aplikace</title>
+    <title>NEW RECIPE</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/newrecipe.css">
 </head>
@@ -21,36 +33,45 @@
     </header>
 
     <main>
-    <section class="inputs">
-        <div class="up">
-            <div class="in-left">
-                <div class="name-div">
-                    <label class="label" for="dname">DISH NAME</label><br>
-                    <input class="name-input" type="text" id="dname" name="dname"><br>
-                </div>
-                <div class="ing-div">
-                    <label class="label" for="ing">INGREDIENTS</label><br>
-                    <textarea class="ing-input" type="text" id="ing" name="ing"></textarea>
+
+    <form action="process.php" method="post" enctype="multipart/form-data">
+        <section class="inputs">
+
+            <div class="up">
+                <div class="in-left">
+                    <div class="name-div">
+                        <label class="label" for="dname">DISH NAME</label><br>
+                        <input class="name-input" type="text" id="dname" name="dname"><br>
+                    </div>
+
+                    <div class="ing-div">
+                        <label class="label" for="ing">INGREDIENTS</label><br>
+                        <textarea class="ing-input" type="text" id="ing" name="ing"></textarea>
+                    </div>
                 </div>
 
+                <div class="in-right">
+                    <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                    
+                    <label for="image" class="custom-upload">
+                        <img src="./svg/button-upimg.svg" alt="button pro upload foto">
+                    </label>
+                </div>
                 
-
             </div>
 
-            <div class="in-right">
-                <img src="./svg/button-upimg.svg" alt="button pro upload foto">
+            <div class="down">
+                <div class="desc-div">
+                    <label class="label" for="desc">DESCRIPTION</label><br>
+                    <textarea class="desc-input" id="desc" name="desc"></textarea>
+                </div>
+                
+                <input type="submit" value="ADD RECIPE" class="addrecipe" name="create">
             </div>
-        </div>
-           
-        <label class="label" for="desc">DESCRIPTION</label><br>
-        <textarea class="desc-input" type="text" id="desc" name="desc"></textarea>
-        
-
-        
-    </section>
-    
-    
-
+            
+        </section>
+    </form>
+  
 
 
 

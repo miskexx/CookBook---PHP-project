@@ -1,28 +1,9 @@
-.up{
+body{
+    background-color: var(--white);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding-top: 1vw;
-    margin-right: 8vw;
-}
-
-
-
-#submit{
-    background-color: var(--white);
-    border: none;
-}
-
-#search{
-    background-color: var(--white);
-    border-bottom: 3px solid var(--lightpink); 
-    border-top: none; border-left: none; border-right: none;
-}
-
-#search:focus{
-    outline: none;
-    caret-color: var(--lightpink); 
 }
 
 h1{
@@ -58,12 +39,33 @@ header a{
     color: var(--pink);
     font-family: Kanit;
 }
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* jmeno, ingredience a foto */
+.up{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1vw;
+    margin-right: 8vw;
+}
+
+.name-div, .ing-div{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
 
 .name-input{
     background-color: #F2D798;
     border: none;
     border-radius: 3px;
-    width: 540px; height: 68px;
+    width: 540px; height: 50px;
 }
 :focus{
     outline: none;
@@ -76,31 +78,13 @@ header a{
     background-color: #F2D798;
     border: none;
     border-radius: 3px;
-    width: 540px; height: 170px;
+    width: 540px; height: 100px;
 }
 :focus{
     outline: none;
     border: 2px solid var(--yellow);
     border-radius: 3px;
     caret-color: var(--lightpink); 
-}
-
-.desc-input{
-    background-color: #F2D798;
-    border: none;
-    border-radius: 3px;
-    width: 90vw; height: 290px;
-}
-:focus{
-    outline: none;
-    border: 2px solid var(--yellow);
-    border-radius: 3px;
-    caret-color: var(--lightpink); 
-}
-
-.inputs{
-    display: flex;
-    flex-direction: column;
 }
 
 .in-left{
@@ -109,8 +93,42 @@ header a{
     gap: 1vw;
 }
 
-.name-div, .ing-div{
+/* jmeno, ingredience a foto */
+
+/* description a submit button */
+
+.down{
     display: flex;
     flex-direction: column;
-    gap: 0vw;
+    gap: 20px;
 }
+
+.desc-input{
+    background-color: #F2D798;
+    border: none;
+    border-radius: 3px;
+    width: 90vw; height: 150px;
+}
+:focus{
+    outline: none;
+    border: 2px solid var(--yellow);
+    border-radius: 3px;
+    caret-color: var(--lightpink); 
+}
+
+.addrecipe{
+    background-color: #F2D798;
+    padding: 5px 30px;
+    border: 3px solid var(--yellow);
+    color: var(--pink);
+    font-family: Kanit;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.addrecipe:hover{
+    background-color: #ecc66c;
+}
+
+

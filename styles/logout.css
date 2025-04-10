@@ -1,0 +1,43 @@
+body{
+    padding-top: 10vw;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    font-family: Kanit;
+    font-size: 45px;
+    color: var(--pink);
+    background-color: var(--lightpink);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.account{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 3vw;
+}
+
+.odkazy{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+#logout{
+    color: var(--red);
+    font-size: 32px;
+}
+
+#Back{
+    color: var(--yellow);
+    font-size: 32px;
+}

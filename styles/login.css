@@ -1,0 +1,74 @@
+body{
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: Kanit;
+    color: var(--pink);
+}
+
+.login{
+    background-color: var(--lightpink);
+    padding: 50px;
+    border-radius: 20px;
+    display: flex;
+}
+.submit{
+    background-color: #F2D798;
+    padding: 5px 30px;
+    border: 3px solid var(--yellow);
+    color: var(--pink);
+    font-family: Kanit;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.submit:hover{
+    background-color: #ecc66c;
+}
+
+.input{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-button{
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.label{
+    font-family: Kanit;
+    color: var(--pink);
+}
+
+.policko{
+    border: 3px solid var(--pink);
+    border-radius: 10px;
+    padding: 5px;
+}
+.policko:focus{
+    outline: none;
+}
