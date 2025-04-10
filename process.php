@@ -15,7 +15,7 @@ if(isset($_POST["create"])){
     $ing = mysqli_real_escape_string($con, $_POST["ing"]);
     $desc = mysqli_real_escape_string($con, $_POST["desc"]);
 
-    $image_name = "default.jpg"; // výchozí obrázek
+    $image_name = "default.svg"; // výchozí obrázek
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $target_dir = "uploads/";
         $tmp_name = $_FILES['image']['tmp_name'];

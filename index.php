@@ -36,14 +36,16 @@
 
             <?php 
 
-            $sql = "SELECT * FROM recipes";
+            $sql = "SELECT * FROM recipes JOIN users ON recipes.user_id = users.id";
             $result = mysqli_query($con, $sql);
+            $img_source = "default.svg";
+            
             
             while ($row = mysqli_fetch_array($result)){
                 ?>
                     <div class="card">
                         <div class="card-img">
-                            <a href="./inspect-recipe.php?id=<?php echo $row['id']?>"><img src="./svg/default img.svg" alt=""></a>
+                            <a href="./inspect-recipe.php?id=<?php echo $row['id']?>"><img src="<?php echo "./uploads/" . $row['image_url'] ?>" alt="obrazek"></a>
                         </div>
 
                         <div class="card-content">

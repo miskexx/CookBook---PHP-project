@@ -41,7 +41,7 @@
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_array($result);
                    ?> 
-                        <p>fotka</p>
+                        <img src="<?php echo "./uploads/" . $row['image_url'] ?>" alt="obrazek">
                         <h1><?php echo $row["title"] ?></h1>
                         <p><?php echo $row["ingredients"] ?></p>
                         <p><?php echo $row["description"] ?></p>

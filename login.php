@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             // OVĚŘENÍ HASHOVANÉHO HESLA
             if(password_verify($password, $user_data['password'])){
-                $_SESSION['user_id'] = $user_data['user_id'];
+                $_SESSION['user_id'] = $user_data['id'];
                 header("Location: index.php");
                 die;
             }

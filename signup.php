@@ -14,10 +14,9 @@ function register($user_name, $password, $secret_code, $con){
 
     if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
 
-        $user_id = random_num(20);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (user_id,user_name,password) VALUES ('$user_id', '$user_name','$hashed_password')";
+        $query = "INSERT INTO users (user_name,password) VALUES ('$user_name','$hashed_password')";
         mysqli_query($con, $query);
 
         header("Location: login.php?msg=register+succesfully");
