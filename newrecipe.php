@@ -71,16 +71,8 @@
             
         </section>
     </form>
-  
 
-
-
-
-
-
-
-
-    </main>
+</main>
 
 </body>
 </html>

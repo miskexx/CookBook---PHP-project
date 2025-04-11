@@ -4,27 +4,34 @@ session_start();
 include ("connection.php");
 include ("functions.php");
 
-function register($user_name, $password, $secret_code, $con){
-   $correct_secret_code = "tajnykod";
-   
-   if($secret_code !== $correct_secret_code){
-        echo "Špatný secret code!";
-        return;
+    $error = "";
+    if(isset($_GET["msg"])){
+        $error = $_GET["msg"];
     }
 
-    if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
-
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-        $query = "INSERT INTO users (user_name,password) VALUES ('$user_name','$hashed_password')";
-        mysqli_query($con, $query);
-
-        header("Location: login.php?msg=register+succesfully");
-
-    } else {
-        echo "Zadej platné údaje.";
+    function register($user_name, $password, $secret_code, $con){
+        $correct_secret_code = "tajnykod";
+    
+        if($secret_code !== $correct_secret_code){
+            header("Location: signup.php?msg=wrong+secret+code");  
+            return;
+        }
+    
+        if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
+    
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
+            $stmt = $con->prepare("INSERT INTO users (user_name, password) VALUES (?, ?)");
+            $stmt->bind_param("ss", $user_name, $hashed_password);
+            $stmt->execute();
+            $stmt->close();
+    
+            header("Location: login.php?msg=register+succesfully");
+    
+        } else {
+            header("Location: signup.php?msg=zadej+platne+udaje");
+        }
     }
-}
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -86,5 +93,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         </section>
  
 </main>
+
+            <?php 
+                if (!empty($error)) {
+                    echo '<div class="error-message" id="flash-message"> ' . htmlspecialchars($error, ENT_QUOTES) . '</div>';
+                }
+            ?>
+
+<script src="flash.js"></script>
 </body>
 </html>

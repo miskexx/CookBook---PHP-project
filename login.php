@@ -15,13 +15,16 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     if(!empty($user_name) && !empty($password) && !is_numeric($user_name)){
 
-        $query = "SELECT * FROM users WHERE user_name = '$user_name' LIMIT 1";
-        $result = mysqli_query($con, $query);
+
+        $stmt = mysqli_prepare($con, "SELECT * FROM users WHERE user_name = ? LIMIT 1");
+        mysqli_stmt_bind_param($stmt, "s", $user_name);
+        mysqli_stmt_execute($stmt);
+
+        $result = mysqli_stmt_get_result($stmt);
 
         if($result && mysqli_num_rows($result) > 0){
             $user_data = mysqli_fetch_assoc($result);
 
-            // OVĚŘENÍ HASHOVANÉHO HESLA
             if(password_verify($password, $user_data['password'])){
                 $_SESSION['user_id'] = $user_data['id'];
                 header("Location: index.php");
@@ -34,6 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $error = "Please enter some valid information";
     }
 }
+
 ?>
 
 
@@ -81,10 +85,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
          
         </section>
             <?php 
-                if(!empty($error)){
-                   echo htmlspecialchars($error, ENT_QUOTES);
+                if (!empty($error)) {
+                    echo '<div class="error-message" id="flash-message"> ' . htmlspecialchars($error, ENT_QUOTES) . '</div>';
                 }
             ?>
+
 </main>
+
+<script src="flash.js"></script>
 </body>
 </html>

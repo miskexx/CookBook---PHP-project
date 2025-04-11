@@ -40,7 +40,7 @@ if(isset($_POST["create"])){
     $sql = "INSERT INTO recipes (user_id ,title, ingredients, description, image_url) VALUES ('$user_id', '$dname', '$ing', '$desc', '$image_name');";
 
     if(mysqli_query($con, $sql)){
-        header("Location: index.php");
+        header("Location: index.php?msg=recipe+was+added");
     }else{
         die("Something went wrong");
     }
@@ -50,14 +50,22 @@ if(isset($_POST["edit"])){
 
     $user_id = $_SESSION['user_id']; // <- přihlášený uživatel
 
-
     $dname = mysqli_real_escape_string($con, $_POST["dname"]);
     $ing = mysqli_real_escape_string($con, $_POST["ing"]);
     $desc = mysqli_real_escape_string($con, $_POST["desc"]);
     $id = mysqli_real_escape_string($con, $_POST["id"]);
 
+    // Nejprve si načti aktuální obrázek z databáze
+    $query = "SELECT image_url FROM recipes WHERE id = '$id' AND user_id = '$user_id' LIMIT 1";
+    $result = mysqli_query($con, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $image_name = $row['image_url']; // výchozí obrázek je ten stávající
+    } else {
+        die("Recipe not found or access denied.");
+    }
 
-    $image_name = "default.jpg"; // výchozí obrázek
+    // Pokud byl nahrán nový obrázek, přepiš image_name
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $target_dir = "uploads/";
         $tmp_name = $_FILES['image']['tmp_name'];
@@ -73,21 +81,17 @@ if(isset($_POST["edit"])){
             }
 
             if (move_uploaded_file($tmp_name, $target_dir . $new_name)) {
-                $image_name = $new_name;
+                $image_name = $new_name; // přepiš jen pokud byl obrázek úspěšně nahrán
             }
         }
     }
 
-
-    $sql = "UPDATE recipes SET title = '$dname',  ingredients = '$ing', description = '$desc', image_url = '$image_name' WHERE id =$id";
+    $sql = "UPDATE recipes SET title = '$dname', ingredients = '$ing', description = '$desc', image_url = '$image_name' WHERE id = $id AND user_id = '$user_id'";
 
     if(mysqli_query($con, $sql)){
-        header("Location: index.php");
-    }else{
+        header("Location: index.php?msg=recipe+was+edited");
+    } else {
         die("Something went wrong");
     }
 }
-
-
- ?>
 

@@ -49,6 +49,19 @@ header a{
     text-decoration: none;
 }
 
+#edit{
+    font-family: Kanit;
+    color: var(--lightpink);
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    background-color: var(--white);
+}
+
+.nazev{
+    text-transform: uppercase;
+}
+
 .recept{
     width: 60%;
     padding: 50px;
@@ -64,4 +77,9 @@ header a{
 .recept h1{
     text-transform: uppercase;
     letter-spacing: 2px;
+}
+
+.inspect-img{
+    width: 300px;
+    border-radius: 25px;
 }
